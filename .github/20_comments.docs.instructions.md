@@ -5,196 +5,163 @@
 Diese Datei definiert verbindliche Regeln für:
 - Kommentare im Code
 - XML-Dokumentation
-- begleitende Dokumentationsdateien (z. B. Markdown)
+- begleitende Dokumentationsdateien (z. B. Markdown, README, API-Referenzen)
 
-Sie ergänzt die allgemeinen Verhaltensregeln aus
-`00_general.behavior.instructions.md` und die Codequalitätsregeln aus
-`10_code.quality.instructions.md`.
+Sie ergänzt:
+- `00_general.behavior.instructions.md`
+- `10_code.quality.instructions.md`
 
 ---
 
 ## Grundsatz: Klarheit vor Menge
 
-- Kommentare und Dokumentation dienen der **Erklärung von Entscheidungen**,
-  nicht der Wiederholung von Code.
-- Mehr Text bedeutet **nicht automatisch** bessere Verständlichkeit.
-- Überflüssige, redundante oder ausschweifende Texte sind zu vermeiden.
+- Kommentare und Dokumentation dienen der **Erklärung des gültigen Zustands**,
+  nicht der didaktischen Ausführung.
+- Mehr Text bedeutet **nicht automatisch** mehr Qualität.
+- Überflüssige oder sekundäre Inhalte sind konsequent zu entfernen.
+
+**Kürzen bedeutet:**
+- **Themen entfernen**, nicht nur Text verdichten.
+- Sekundäre Inhalte sind vollständig zu streichen,
+  auch wenn sie fachlich korrekt oder potenziell hilfreich wären.
 
 ---
 
 ## Keine historischen oder vergleichenden Erzählungen
 
-Kommentare und Dokumentation müssen den **aktuellen, gültigen Zustand** beschreiben.
+Kommentare und Dokumentation beschreiben ausschließlich den **aktuellen, gültigen Zustand**.
 
-Unzulässig sind insbesondere:
-- historische Erklärungen wie  
-  „früher wurde das so gemacht …“
-- vergleichende Darstellungen wie  
-  „vorher / nachher“, „alt / neu“, „damals / jetzt“
-- große Code-Snippets, die ausschließlich zeigen,
-  wie etwas **nicht mehr** gemacht wird
-- narrative oder erklärende „Geschichten“ zur Code-Evolution
+Unzulässig sind:
+- historische Erklärungen („früher“, „damals“, „vorher“)
+- Vergleiche („alt/neu“, „vorher/nachher“)
+- narrative oder erklärende Geschichten
+- große Beispielblöcke ohne zwingenden Contract-Bezug
 
-Kommentare und Dokumentation sind **keine Migrationsberichte**
-und **keine Entscheidungsprotokolle**.
+Dokumentation ist **keine** Schulung und **kein** Blogartikel.
 
-Zulässig sind ausschließlich:
-- Beschreibung dessen, **was gilt**
-- Erklärung dessen, **wie es aktuell umgesetzt wird**
-- Begründung von **bestehenden** Designentscheidungen,
-  sofern sie für das Verständnis notwendig sind
+---
+
+## Contract-first-Dokumentation (verbindlich)
+
+Technische Dokumentation beschreibt **primär den technischen Contract**.
+
+Ein Contract umfasst:
+- Zweck einer Schnittstelle / Komponente
+- Aufruf- oder Lebenszyklusmechanismus
+- verbindliche Anforderungen
+- zulässige und unzulässige Nutzung
+
+Unzulässig in Contract-Dokumentation:
+- Vorteile, Motivationstexte oder Vergleiche
+- Best-Practice-Sammlungen
+- „Erweiterte Szenarien“
+- Patterns, die nicht zwingend Teil des Contracts sind
+- mehr als **3 kleine Codebeispiele**
+
+---
+
+## Dokumentation: Scope-Pflicht vor Erstellung oder Überarbeitung
+
+Bei jeder Aufgabe zur **Erstellung, Kürzung oder Überarbeitung** von Dokumentation
+muss Copilot **vor der Texterstellung**:
+
+1. den **inhaltlichen Scope explizit benennen**
+   (z. B. „technischer Contract“, „öffentliche API“, „Architekturüberblick“)
+2. eine **kurze Gliederung** vorschlagen (max. 5–7 Abschnitte)
+3. den **Zielumfang** nennen (z. B. „< 100 Zeilen Markdown“)
+
+Ohne explizite Freigabe:
+- **keinen Fließtext erzeugen**
+- **keine Beispiele ausformulieren**
 
 ---
 
 ## Kommentare im Code
 
-### Wann Kommentare sinnvoll sind
-Kommentare sind zulässig und sinnvoll, wenn sie:
-- das **Warum** erklären (Designentscheidung, fachlicher Hintergrund),
-- nicht offensichtliche Randbedingungen oder Annahmen erläutern,
-- vor bekannten Fallstricken oder Nebenwirkungen warnen.
-
-Kommentare dürfen **nicht** erklären,
-wie eine frühere Lösung aussah oder warum sie ersetzt wurde.
-
-### Wann Kommentare unzulässig sind
-Kommentare sind unzulässig, wenn sie:
-- lediglich beschreiben, **was** der Code offensichtlich tut,
-- Codezeilen paraphrasieren,
-- veraltete, spekulative oder hypothetische Informationen enthalten.
-
-Wenn der Code ohne Kommentar nicht verständlich ist:
-- zuerst Code verbessern,
-- erst dann kommentieren.
-
----
-
-## XML-Dokumentation / API-Doku
-
-- Öffentliche APIs (public / protected) **dürfen** dokumentiert werden,
-  private Implementierungsdetails **nicht zwingend**.
-- Dokumentation muss:
-  - korrekt,
-  - aktuell,
-  - präzise
-  sein.
+Kommentare sind nur zulässig, wenn sie:
+- das **Warum** erklären
+- nicht offensichtliche Randbedingungen beschreiben
 
 Unzulässig:
-- Platzhalter-Texte
-- automatisch generierte Leerformeln
-- Dokumentation, die dem Code widerspricht
+- Wiederholung des Codes
+- Beschreibung veralteter oder hypothetischer Varianten
+
+Wenn Code ohne Kommentar nicht verständlich ist:
+- Code verbessern
+- erst danach kommentieren
 
 ---
 
-## Dokumentationsdateien (Markdown, README, API-Referenzen)
+## XML-Dokumentation / API-Referenzen
 
-- Diese Regeln gelten explizit für:
-  - Solution-README-Dateien
-  - Projekt-README-Dateien
-  - API-Referenzdokumente
-  - weitere konzeptionelle Markdown-Dokumentationen
+- Öffentliche APIs dürfen dokumentiert werden.
+- Dokumentation muss korrekt, aktuell und präzise sein.
+- API-Referenzen beschreiben **nur den gültigen Zustand**.
 
-- Dokumentation ist **normativ**, nicht dekorativ.
-- Beispiele dienen der Erläuterung,
-  **ersetzen keine formale Beschreibung**.
+Unzulässig:
+- Platzhalter
+- automatisch generierte Leerformeln
+- historische oder alternative Nutzung
 
 ---
 
 ## Struktur von README- und Dokumentationsdateien
 
 ### Solution-README
-- Die Solution-README ist **bewusst kurz** zu halten.
-- Sie beschreibt:
-  - die enthaltenen Projekte in knapper Form
-  - und verlinkt auf die jeweiligen Projekt-README-Dateien.
-- Sie enthält **keine ausführlichen Konzepte** und keine API-Details.
+- bewusst **kurz**
+- Projektübersicht + Links auf Projekt-READMEs
+- keine Konzepte, keine API-Details
 
 ### Projekt-README
-- Jede Projekt-README darf **ausführlich und konzeptionell** sein.
-- Sie darf auf Unterseiten verlinken, wenn der Umfang es erfordert.
-- Unterseiten müssen im Ordner `Projekt/Docs` liegen.
+- konzeptionell gegliedert
+- darf auf Unterseiten verlinken
+- Unterseiten liegen in `Projekt/Docs`
 
 ### API-Referenzen
-- API-Referenzen liegen ebenfalls im Ordner `Projekt/Docs`.
-- Je nach Umfang dürfen sie auf weitere Unterseiten verlinken.
-- API-Referenzen beschreiben den **aktuellen gültigen Zustand**,
-  nicht historische oder alternative Nutzung.
+- liegen in `Projekt/Docs`
+- dürfen auf Unterseiten verlinken
+- beschreiben ausschließlich den Contract
 
 ---
 
 ## Doc Review (expliziter Auftrag)
 
-Wenn der Auftrag **„Doc Review“** erteilt wird, hat Copilot:
+Bei einem **Doc Review** hat Copilot:
+- alle relevanten Markdown-Dateien zu prüfen
+- Aktualität, Konsistenz und Verlinkungen zu bewerten
+- Inhalte außerhalb des vereinbarten Scopes zu identifizieren
 
-- **alle relevanten Markdown-Dokumentationen** zu prüfen,
-  nicht nur einzelne Dateien
-- zu bewerten:
-  - ob Inhalte noch **aktuell** sind
-  - ob Beschreibungen zum aktuellen Code- und Architekturstand passen
-  - ob **alle Verlinkungen funktionieren** und sinnvoll sind
-
-Ein Doc Review umfasst:
-- keine inhaltliche Neugestaltung
-- keine Umformulierungen
-- keine Erweiterungen über den Ist-Zustand hinaus
-
-Ergebnis eines Doc Reviews ist:
-- eine **strukturierte Rückmeldung**
-- mit konkreten Hinweisen, was veraltet oder inkonsistent ist
-- **keine automatischen Änderungen**, sofern nicht explizit beauftragt
+Ein Doc Review:
+- nimmt **keine automatischen Änderungen** vor
+- liefert eine strukturierte Rückmeldung
 
 ---
 
 ## Erzeugung von Markdown-Dateien (restriktiv)
 
-Copilot darf **nicht eigenständig** neue `.md`-Dateien erzeugen
-(z. B. Testpläne, Refactoring-Pläne, Aufgabenlisten).
+Copilot darf **keine neuen Markdown-Dateien** erzeugen ohne explizite Zustimmung.
 
-Vor Refactoring- oder größeren Umbauaufgaben muss Copilot:
-- **explizit fragen**, ob:
-  - eine schriftliche Dokumentation der Aufgabe gewünscht ist
-  - eine Aufgabenplanung als Datei erstellt werden soll
-  - ein Aufgabenfortschritt dokumentiert werden soll
+Vor Refactoring- oder größeren Umbauaufgaben muss Copilot fragen:
+- ob eine Dokumentation gewünscht ist
+- ob eine Aufgabenplanung dokumentiert werden soll
+- ob ein Fortschritt festgehalten werden soll
 
-Ohne explizite Zustimmung:
-- keine neuen Markdown-Dateien
-- keine persistierten Pläne oder Berichte
-
-Ziel ist:
-- eine **bewusst schlanke Dokumentationslandschaft**
-- kein „Ertrinken“ in automatisch erzeugten `.md`-Dateien
+Ziel ist eine **bewusst schlanke Dokumentationslandschaft**.
 
 ---
 
 ## Dokumentation nach Refactorings
 
-Nach Abschluss einer Refactoring-Aufgabe muss Copilot **nachfragen**,
+Nach Refactoring-Aufgaben muss Copilot fragen,
 ob ein Doc Review durchgeführt werden soll.
 
-Ein Doc Review erfolgt **nicht automatisch**, sondern nur nach Bestätigung.
-
 ---
 
-## Änderungsdisziplin bei Dokumentation
+## Kurzform
 
-- Bestehende Dokumentationsdateien dürfen **nicht**:
-  - gekürzt,
-  - umformuliert,
-  - neu strukturiert
-  werden, ohne explizite Anweisung.
-
-- Ergänzungen müssen:
-  - klar als Ergänzung erkennbar sein,
-  - den bestehenden Stil respektieren,
-  - keinen bestehenden Inhalt implizit verändern.
-
----
-
-## Kurzform (Kommentare & Doku)
-
-- ✅ Ist-Zustand beschreiben
-- ✅ Wie es gemacht wird erklären
-- ✅ Doc Review nur auf expliziten Auftrag
-- ❌ Keine historischen Erzählungen
-- ❌ Keine Alt/Neu- oder Vorher/Nachher-Vergleiche
+- ✅ Contract beschreiben
+- ✅ Scope vorab festlegen
+- ❌ Keine Tutorials
+- ❌ Keine Best Practices
+- ❌ Keine erweiterten Szenarien
 - ❌ Keine ungefragten Markdown-Dateien

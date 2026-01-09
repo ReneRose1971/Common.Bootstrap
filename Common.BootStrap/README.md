@@ -135,8 +135,6 @@ public class MessagingModule : IServiceModule
 }
 ```
 
-[Mehr über Service-Module →](Docs/ServiceModules.md)
-
 ## Bootstrap-Wrapper Pattern
 
 ### DefaultBootstrapWrapper
@@ -223,8 +221,6 @@ public class MyRepository
 }
 ```
 
-[Mehr über EqualityComparer-Management →](Docs/EqualityComparer.md)
-
 ## Best Practices
 
 ### ✅ Do's
@@ -243,9 +239,6 @@ public class MyRepository
 
 ## Weiterführende Dokumentation
 
-- [📖 IServiceModule verstehen](Docs/ServiceModules.md)
-- [📦 Modulare Registrierung](Docs/Modulare-Registrierung.md)
-- [⚖️ EqualityComparer-Management](Docs/EqualityComparer.md)
 - [📋 API-Referenz](Docs/API-Referenz.md) – Vollständige alphabetisch sortierte API-Dokumentation
 
 ## Lizenz & Repository
