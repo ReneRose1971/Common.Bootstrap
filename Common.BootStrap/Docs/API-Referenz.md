@@ -9,9 +9,7 @@ Vollständige alphabetisch sortierte API-Dokumentation für alle öffentlichen S
 - [IServiceModule](#iservicemodule)
 - [ServiceCollectionEqualityComparerExtensions](#servicecollectionequalitycomparerextensions)
 - [ServiceCollectionModuleExtensions](#servicecollectionmoduleextensions)
-- [ServiceProviderEqualityComparerExtensions](#serviceproviderequal
-
-itycomparerextensions)
+- [ServiceProviderEqualityComparerExtensions](#serviceproviderequal­itycomparerextensions)
 
 ---
 
@@ -342,9 +340,7 @@ builder.Services.AddEqualityComparersFromAssembly<Program>();
 ### Siehe auch
 
 - [`DefaultBootstrapWrapper`](#defaultbootstrapwrapper) – Nutzt diese Extension automatisch
-- [`ServiceProviderEqualityComparerExtensions`](#serviceproviderequal
-
-itycomparerextensions) – Comparer auflösen
+- [`ServiceProviderEqualityComparerExtensions`](#serviceproviderequal­itycomparerextensions) – Comparer auflösen
 - [EqualityComparer-Management](EqualityComparer.md) – Vollständiger Leitfaden
 
 ---
